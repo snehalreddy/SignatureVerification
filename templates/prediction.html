@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Online Signature Verification</title>
+
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <!--Import Google Icon Font-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" />
+  </head>
+  <body>
+    <div class="parallax-container" id="parallax-container">
+      <div class="parallax">
+        <img src="{{url_for('static', filename='cover2.jpg')}}" />
+        <div style="height: 300px;"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12 center-align">
+        <br /><br /><br />
+        <h1>Prediction successfully completed!</h1>
+        <br>
+        <h2>The prediction result is: {{prediction_text}}</h2>
+        <div style="height: 300px;"></div>
+      </div>
+    </div>
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $(".parallax").parallax();
+      });
+    </script>
+  </body>
+</html>
