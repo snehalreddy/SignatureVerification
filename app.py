@@ -11,6 +11,7 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
+
 @app.route('/file_upload')
 def file_upload():
     return render_template('file_upload.html')
@@ -24,10 +25,9 @@ def extract_features():
     SDV = []
     SDA = []
 
-
     file = pd.read_csv("uploadedFile.txt", delimiter=' ', names=['X', 'Y', 'TS', 'BS', 'AZ', 'AL', 'P'],
-                     header=None,
-                     skiprows=1)
+                       header=None,
+                       skiprows=1)
     file_size = len(file)
     X = file['X']
     Y = file['Y']
@@ -175,7 +175,7 @@ def predict():
             signFile.save("uploadedFile.txt")
 
             try:
-                features = extract_features()                
+                features = extract_features()
             except ZeroDivisionError as err:
                 return render_template('404.html')
 
@@ -195,17 +195,14 @@ def predict():
             forgery_status = model2.predict([features])
             print('forgery status:', int(round(forgery_status[0][0])))
 
-            status = ""
             if int(round(forgery_status[0][0])) == 0:
-                status = 'Genuine Signature for user ' + str(user+1)
                 return render_template('genuine.html')
             else:
-                status = 'Forged Signature for user ' + str(user+1)
                 return render_template('forged.html')
-            
+
     else:
-        return render_template('prediction.html', prediction_text="File upload failed!")
+        return render_template('404.html')
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
